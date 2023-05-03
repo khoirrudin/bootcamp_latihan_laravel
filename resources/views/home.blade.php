@@ -20,11 +20,11 @@
 
                         $data = DB::table('users')
                             ->leftJoin('role', 'users.role_id', 'role.id')
-                            ->select('role.keterangan as role_user')
+                            ->select('role.keterangan as role_user', 'users.name as name')
                             ->where('users.id', $user_id)
                             ->first();
                     ?>
-                    {{ __('Selamat datang! Anda berhasil login sebagai ') }} {{ $data->role_user }}
+                    {{ __('Selamat datang kembali ') }} {{ $data->name }} {{ '!' }}
                     <hr>
                     @if($role_id == 1)
                     <!-- ROLE USER PENJUAL-->
